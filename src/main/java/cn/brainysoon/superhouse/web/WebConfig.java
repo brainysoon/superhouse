@@ -1,5 +1,7 @@
 package cn.brainysoon.superhouse.web;
 
+import cn.brainysoon.superhouse.dao.StaffRepository;
+import cn.brainysoon.superhouse.service.StaffService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +17,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
  */
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackageClasses = {WebConfig.class})
+@ComponentScan(basePackageClasses = {WebConfig.class, StaffService.class, StaffRepository.class})
 public class WebConfig extends WebMvcConfigurerAdapter {
 
     private static final String CSS_LOACTION = "/resources/css/**";
