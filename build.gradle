@@ -1,0 +1,28 @@
+group 'brianysoon.cn'
+version '1.0.0'
+
+apply plugin: 'java'
+apply plugin: 'war'
+
+sourceCompatibility = 1.5
+
+repositories {
+    maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.springframework:spring-webmvc:$springVersion"
+    compile "org.springframework:spring-jdbc:$springVersion"
+    compile "mysql:mysql-connector-java:$mysqlConnectorVersion"
+
+    compile "javax.servlet:jstl:$jstlVersion"
+    compile "org.hibernate:hibernate-validator:$hibernateValidatorVersion"
+    providedCompile "javax.servlet:javax.servlet-api:$servletVersion"
+    providedCompile "javax.servlet.jsp:jsp-api:$jspApiVersion"
+    providedCompile "javax.el:javax.el-api:$jspElVersion"
+
+    testCompile "junit:junit:$junitVersion"
+    testCompile "org.mockito:mockito-core:$mockitoVersion"
+    testCompile "org.springframework:spring-test:$springVersion"
+}
