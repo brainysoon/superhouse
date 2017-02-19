@@ -23,6 +23,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     private static final String CSS_LOACTION = "/resources/css/**";
     private static final String JS_LOCATION = "/resources/js/**";
     private static final String IMAGE_LOCATION = "/resources/images/**";
+    private static final String FONTS_LOCATION = "/resources/fonts/**";
 
     @Bean
     public ViewResolver viewResolver() {
@@ -45,5 +46,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         registry.addResourceHandler(CSS_LOACTION).addResourceLocations(CSS_LOACTION);
         registry.addResourceHandler(JS_LOCATION).addResourceLocations(JS_LOCATION);
         registry.addResourceHandler(IMAGE_LOCATION).addResourceLocations(IMAGE_LOCATION);
+        registry.addResourceHandler(FONTS_LOCATION).addResourceLocations(FONTS_LOCATION);
     }
 }

@@ -3,7 +3,6 @@ package cn.brainysoon.superhouse.service.impl;
 import cn.brainysoon.superhouse.bean.Goods;
 import cn.brainysoon.superhouse.dao.GoodsRepository;
 import cn.brainysoon.superhouse.service.SaveService;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.sql.Date;
 
@@ -14,7 +13,6 @@ public class SaveServiceImpl implements SaveService {
 
     GoodsRepository goodsRepository;
 
-    @Autowired
     public void setGoodsRepository(GoodsRepository goodsRepository) {
         this.goodsRepository = goodsRepository;
     }

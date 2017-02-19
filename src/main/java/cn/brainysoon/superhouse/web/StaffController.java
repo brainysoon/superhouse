@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -17,8 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  * Created by brainy on 17-2-18.
  */
 @Controller
-@RequestMapping("/login")
-@SessionAttributes("_id")
+@SessionAttributes("staff")
 public class StaffController {
 
     private StaffService staffService;
@@ -31,7 +31,7 @@ public class StaffController {
     /**
      * @return 对登录页面请求的响应
      */
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value = "login", method = RequestMethod.GET)
     public String login() {
 
         return "login";
@@ -40,7 +40,7 @@ public class StaffController {
     /**
      * @return 跳回到首页
      */
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(value = "login", method = RequestMethod.POST)
     public String doLogin(Model model,
                           @RequestParam(value = "_id") String _id,
                           @RequestParam(value = "password") String password,
@@ -79,5 +79,13 @@ public class StaffController {
 
             return "login";
         }
+    }
+
+    @RequestMapping(value = "logout", method = RequestMethod.GET)
+    public String logout(SessionStatus sessionStatus) {
+
+        sessionStatus.setComplete();
+
+        return "redirect:/";
     }
 }

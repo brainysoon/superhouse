@@ -20,7 +20,6 @@ public class SaveController {
 
     SaveService saveService;
 
-    @Autowired
     public void setSaveService(SaveService saveService) {
         this.saveService = saveService;
     }

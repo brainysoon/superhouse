@@ -16,6 +16,6 @@ public class IndexController {
     public String home(Model model) {
 
 
-        return "index";
+        return "main";
     }
 }
