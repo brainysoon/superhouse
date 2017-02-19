@@ -86,6 +86,6 @@ public class StaffController {
 
         sessionStatus.setComplete();
 
-        return "redirect:/";
+        return "redirect:/login";
     }
 }

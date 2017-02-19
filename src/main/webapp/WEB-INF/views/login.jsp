@@ -39,7 +39,7 @@
                 <label for="loginname" class="t">
                     <h2 id="loginname">
                         <font color="#269ABC">
-                            欢迎登录超市仓库管理系统
+                            <a href="/">欢迎登录超市仓库管理系统</a>
                         </font>
                     </h2>
                 </label>
