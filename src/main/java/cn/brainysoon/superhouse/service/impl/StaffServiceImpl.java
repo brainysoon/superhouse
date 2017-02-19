@@ -22,6 +22,12 @@ public class StaffServiceImpl implements StaffService {
     @Override
     public int handleLogin(String _id, String password) {
 
+        //简单校验
+        if (_id.equals("") || password.equals("")) {
+
+            return -2;
+        }
+
         Staff staff = null;
 
         staff = staffRepository.findStaffById(_id);
@@ -38,5 +44,11 @@ public class StaffServiceImpl implements StaffService {
         } else {
             return 0;
         }
+    }
+
+    @Override
+    public Staff getStaffById(String _id) {
+
+        return staffRepository.findStaffById(_id);
     }
 }
