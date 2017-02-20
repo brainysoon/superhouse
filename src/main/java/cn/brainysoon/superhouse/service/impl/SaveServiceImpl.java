@@ -3,16 +3,21 @@ package cn.brainysoon.superhouse.service.impl;
 import cn.brainysoon.superhouse.bean.Goods;
 import cn.brainysoon.superhouse.dao.GoodsRepository;
 import cn.brainysoon.superhouse.service.SaveService;
+import cn.brainysoon.superhouse.utils.CheckUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.sql.Date;
 
 /**
  * Created by brainy on 17-2-18.
  */
+@Service
 public class SaveServiceImpl implements SaveService {
 
     GoodsRepository goodsRepository;
 
+    @Autowired
     public void setGoodsRepository(GoodsRepository goodsRepository) {
         this.goodsRepository = goodsRepository;
     }
@@ -22,6 +27,13 @@ public class SaveServiceImpl implements SaveService {
                          Double price, Integer usefullife, Date dateproduced, Integer position) {
 
         int saveCode = 0;
+
+        //判断字段是否有空
+        if (CheckUtils.getInstance().isGoodsHasNull(_id, goodsname, count, goodsclass,
+                price, usefullife, dateproduced, position)) {
+
+            return -3;
+        }
 
         //创建实体类
         Goods goods = new Goods();

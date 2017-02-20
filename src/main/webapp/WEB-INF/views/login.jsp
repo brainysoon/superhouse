@@ -15,7 +15,7 @@
     <!---CSS-->
     <link rel="stylesheet" type="text/css" href="/resources/css/login.css">
     <link rel="stylesheet" href="/resources/css/bootstrap.min.css">  <!--响应式布局框架-->
-    <link rel="shortcut icon" type="image/x-icon" href="resources/images/favicon.ico" media="screen"/>
+    <link rel="shortcut icon" type="image/x-icon" href="/resources/images/favicon.ico" media="screen"/>
 
     <script src="/resources/js/jquery-1.8.2.min.js"></script>       <!--jquery-->
     <script type="text/javascript" src="/resources/js/jquery.form.js"></script>
@@ -39,7 +39,7 @@
                 <label for="loginname" class="t">
                     <h2 id="loginname">
                         <font color="#269ABC">
-                            <a href="/">欢迎登录超市仓库管理系统</a>
+                            <a href="/index">欢迎登录超市仓库管理系统</a>
                         </font>
                     </h2>
                 </label>

@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>超市仓库管理系统</title>
+    <title>查询</title>
     <!--<link rel="stylesheet" href="/resources/css/bootstrap.min.css" type="text/css"/>-->
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="shortcut icon" type="image/x-icon" href="/resources/images/favicon.ico" media="screen"/>
@@ -22,6 +22,7 @@
 <div class="container">
     <div class="top">
         <div class="top_logo">
+
         </div>
         <div class="top_search">
             <form action="/query" method="post" role="form">
@@ -48,59 +49,54 @@
     <div class="center">
         <div class="center_list">
             <ul class="list-group">
-                <li class="list-group-item active">主页面</li>
+                <li class="list-group-item"><a href="/index">主页面</a></li>
                 <li class="list-group-item"><a href="/save">存货</a></li>
                 <li class="list-group-item"><a href="/pick">取货</a></li>
-                <li class="list-group-item"><a href="/query">查询</a></li>
+                <li class="list-group-item active">查询</li>
                 <li class="list-group-item"><a href="/scrap">报废</a></li>
                 <li class="list-group-item"><a href="/staff">用户管理</a></li>
             </ul>
         </div>
-        <div class="center_cont">
-            <div id="myCarousel" class="carousel side">
-                <ol class="carousel-indicators">
-                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                    <li data-target="#myCarousel" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                    <div class="item active">
-                        <img src="/resources/images/m1.png">
-                    </div>
-                    <div class="item">
-                        <img src="/resources/images/m2.jpg">
-                    </div>
-                    <div class="item">
-                        <img src="/resources/images/m3.png">
-                    </div>
-                </div>
-                <a href="#myCarousel" class="carousel-control left" data-slide="prev">&lsaquo;</a>
-                <a href="#myCarousel" class="carousel-control right" data-slide="next">&rsaquo;</a>
-            </div>
+        <div class="center_search">
+            <table class="table">
+                <caption>查询结果如下:</caption>
+                <thead>
+                <tr>
+                    <th>货物编号</th>
+                    <th>货物名称</th>
+                    <th>货物类别</th>
+                    <th>货物价格</th>
+                    <th>货物数量</th>
+                    <th>货物存放位置</th>
+                    <th>货物生产日期</th>
+                    <th>货物有效日期</th>
+                </tr>
+                </thead>
+                <%! int index = 0;%>
+                <c:forEach items="${goodses}" var="goods">
+                    <tr class='<%=index%2==0?"success":""%>'>
+                        <td><c:out value="${goods._id}"/></td>
+                        <td><c:out value="${goods.goodsname}"/></td>
+                        <td><c:out value="${goods.goodsclass}"/></td>
+                        <td><c:out value="${goods.price}"/></td>
+                        <td><c:out value="${goods.count}"/></td>
+                        <td><c:out value="${goods.position}"/></td>
+                        <td><c:out value="${goods.dateproduced}"/></td>
+                        <td><c:out value="${goods.usefullife}"/></td>
+                    </tr>
 
-            <a href="#myCarousel" class="carousel-control left" data-slide="prev"
+                    <% index++;%>
+                </c:forEach>
+                </tbody>
+            </table>
+
+            <a href="#" class="carousel-control left" data-slide="prev"
                style="height: 1000px;width: 120px;">&lsaquo;</a>
-            <a href="#myCarousel" class="carousel-control right" data-slide="next"
+            <a href="#" class="carousel-control right" data-slide="next"
                style="height: 1000px;width: 120px;">&rsaquo;</a>
         </div>
-        <div class="center_foods">
-            <div class="foods"><img src="/resources/images/food2.jpg">
-                <p>1</p></div>
-            <div class="foods"><img src="/resources/images/food6.jpg">
-                <p>2</p></div>
-            <div class="foods"><img src="/resources/images/food1.jpg">
-                <p>3</p></div>
-            <div class="foods"><img src="/resources/images/food3.jpg">
-                <p>4</p></div>
-            <div class="foods"><img src="/resources/images/food4.jpg">
-                <p>5</p></div>
-            <div class="foods"><img src="/resources/images/food5.jpg">
-                <p>6</p></div>
-            <div class="foods"><img src="/resources/images/food7.jpg">
-                <p>7</p></div>
-            <div class="foods"><img src="/resources/images/food8.jpg">
-                <p>8</p></div>
-        </div>
+
+
     </div>
     <div class="bottom">
         <p class="bottom_msg">All rights received 2017 designed by 葱葱小可爱 </p>

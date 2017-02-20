@@ -10,7 +10,12 @@ import java.util.List;
 public interface GoodsRepository {
 
     String SAVE_GOODS = "INSERT INTO goods VALUES(?,?,?,?,?,?,?,?)";
-    String QUERY_GOODS_BY_ID = "SELCET * FROM ";
+    String FIND_GOODS = "SELECT * FROM goods WHERE _id=? AND position=?";
+    String PICK_GOODS = "UPDATE goods SET count=? WHERE _id=? AND position=?";
+    String FIND_GOODS_BY_KEY = "SELECT * FROM goods WHERE _id LIKE ? OR goodsname LIKE" +
+            " ? OR goodsclass LIKE ?";
+    String FIND_GOODS_SHOULD_SCRAPED = "SELECT * FROM goods";
+    String DELETE_GOODS_BY_ID_POSITION = "DELETE FROM goods WHERE _id=? AND position=?";
 
     /**
      * //保存货物
@@ -21,20 +26,34 @@ public interface GoodsRepository {
     int saveGoods(Goods goods);
 
     /**
-     * @param id 查找关键字
-     * @return 返回查找到的集合
+     * @param _id
+     * @param position
+     * @return
      */
-    List<Goods> findGoodsById(String id);
+    Goods findGoods(String _id, Integer position);
 
     /**
-     * @param goodsname 查找关键字
-     * @return 返回货物集合
+     * @param goods
+     * @return
      */
-    List<Goods> findGoodsByGoodsName(String goodsname);
+    int pickGoods(Goods goods);
 
     /**
-     * @param goodsclass 查找关键字
-     * @return 返回查找到的货物集合
+     * @param key
+     * @return
      */
-    List<Goods> findGoodsByGoodsClass(String goodsclass);
+    List<Goods> findGoodsByKey(String key);
+
+
+    /**
+     * @return
+     */
+    List<Goods> findGoodsScraped();
+
+    /**
+     * @param _id
+     * @param position
+     * @return
+     */
+    int deleteGoodsByIdPosition(String _id, Integer position);
 }

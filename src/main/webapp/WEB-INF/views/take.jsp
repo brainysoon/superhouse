@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>超市仓库管理系统</title>
+    <title>取货</title>
     <!--<link rel="stylesheet" href="/resources/css/bootstrap.min.css" type="text/css"/>-->
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="shortcut icon" type="image/x-icon" href="/resources/images/favicon.ico" media="screen"/>
@@ -22,6 +22,7 @@
 <div class="container">
     <div class="top">
         <div class="top_logo">
+
         </div>
         <div class="top_search">
             <form action="/query" method="post" role="form">
@@ -48,59 +49,65 @@
     <div class="center">
         <div class="center_list">
             <ul class="list-group">
-                <li class="list-group-item active">主页面</li>
+                <li class="list-group-item"><a href="/index">主页面</a></li>
                 <li class="list-group-item"><a href="/save">存货</a></li>
-                <li class="list-group-item"><a href="/pick">取货</a></li>
+                <li class="list-group-item active">取货</li>
                 <li class="list-group-item"><a href="/query">查询</a></li>
                 <li class="list-group-item"><a href="/scrap">报废</a></li>
                 <li class="list-group-item"><a href="/staff">用户管理</a></li>
             </ul>
         </div>
-        <div class="center_cont">
-            <div id="myCarousel" class="carousel side">
-                <ol class="carousel-indicators">
-                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                    <li data-target="#myCarousel" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                    <div class="item active">
-                        <img src="/resources/images/m1.png">
+        <div class="center_saveForm">
+            <div class="saveForm">
+                <form role="form" action="/pick" method="post" class="form-horizontal">
+                    <br><br>
+                    <div class="form-group">
+                        <lable for="goodsNum" class="col-sm-4 control-label">货物编号</lable>
+                        <div class="col-sm-8">
+                            <input type="text" name="_id" id="goodsNum" class="form-control">
+                        </div>
                     </div>
-                    <div class="item">
-                        <img src="/resources/images/m2.jpg">
+
+                    <div class="form-group">
+                        <lable for="goodsPlace" class="col-sm-4 control-label">货物存放位置</lable>
+                        <div class="col-sm-8">
+                            <input type="text" name="position" id="goodsPlace" class="form-control">
+                        </div>
                     </div>
-                    <div class="item">
-                        <img src="/resources/images/m3.png">
+
+                    <div class="form-group">
+                        <lable for="goodsNumber" class="col-sm-4 control-label">货物数量</lable>
+                        <div class="col-sm-8">
+                            <input type="text" name="count" id="goodsNumber" class="form-control">
+                        </div>
                     </div>
+                    <br>
+                    <div class="form-group">
+                        <div class="col-sm-offset-4 col-sm-8">
+                            <button type="submit" class="btn btn-success"
+                            ${islogin?'':'disabled="disabled"'} >
+                                ${islogin?'提交':'请登录'}</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="form-group">
+
+                    <label class="t"></label>
+
+                    <label class="error"><p style="color: red">
+                        <c:out value="${code}"/>
+                        <c:out value="${codestring}"/>
+                    </p></label>
                 </div>
-                <a href="#myCarousel" class="carousel-control left" data-slide="prev">&lsaquo;</a>
-                <a href="#myCarousel" class="carousel-control right" data-slide="next">&rsaquo;</a>
             </div>
 
-            <a href="#myCarousel" class="carousel-control left" data-slide="prev"
+            <a href="#" class="carousel-control left" data-slide="prev"
                style="height: 1000px;width: 120px;">&lsaquo;</a>
-            <a href="#myCarousel" class="carousel-control right" data-slide="next"
+            <a href="#" class="carousel-control right" data-slide="next"
                style="height: 1000px;width: 120px;">&rsaquo;</a>
         </div>
-        <div class="center_foods">
-            <div class="foods"><img src="/resources/images/food2.jpg">
-                <p>1</p></div>
-            <div class="foods"><img src="/resources/images/food6.jpg">
-                <p>2</p></div>
-            <div class="foods"><img src="/resources/images/food1.jpg">
-                <p>3</p></div>
-            <div class="foods"><img src="/resources/images/food3.jpg">
-                <p>4</p></div>
-            <div class="foods"><img src="/resources/images/food4.jpg">
-                <p>5</p></div>
-            <div class="foods"><img src="/resources/images/food5.jpg">
-                <p>6</p></div>
-            <div class="foods"><img src="/resources/images/food7.jpg">
-                <p>7</p></div>
-            <div class="foods"><img src="/resources/images/food8.jpg">
-                <p>8</p></div>
-        </div>
+
+
     </div>
     <div class="bottom">
         <p class="bottom_msg">All rights received 2017 designed by 葱葱小可爱 </p>

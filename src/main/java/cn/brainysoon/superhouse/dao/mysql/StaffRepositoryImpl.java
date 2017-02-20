@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * Created by brainy on 17-2-17.
@@ -59,5 +60,53 @@ public class StaffRepositoryImpl implements StaffRepository, RowMapper<Staff> {
         staff.setIssuper(rs.getInt(ISSUPER));
 
         return staff;
+    }
+
+    @Override
+    public List<Staff> queryAllStaff() {
+
+        try {
+
+            return jdbcOperations.query(QUERY_ALL_STAFF, this);
+        } catch (Exception ex) {
+
+            ex.printStackTrace();
+        }
+
+        return null;
+    }
+
+    @Override
+    public int addStaff(Staff staff) {
+
+        try {
+
+            return jdbcOperations.update(ADD_STAFF,
+                    staff.get_id(),
+                    staff.getStaffname(),
+                    staff.getPassword(),
+                    staff.getBirthday(),
+                    staff.getDatein(),
+                    staff.getIssuper()
+            );
+
+        } catch (Exception ex) {
+
+            ex.printStackTrace();
+        }
+        return -1;
+    }
+
+    @Override
+    public int deleteStaffById(String _id) {
+
+        try {
+
+            return jdbcOperations.update(DELETE_STAFF_BY_ID, _id);
+        } catch (Exception ex) {
+
+            ex.printStackTrace();
+        }
+        return -1;
     }
 }

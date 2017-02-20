@@ -16,6 +16,12 @@ public class IndexController {
     public String home(Model model) {
 
 
+        return "login";
+    }
+
+    @RequestMapping(value = "index", method = RequestMethod.GET)
+    public String index() {
+
         return "main";
     }
 }

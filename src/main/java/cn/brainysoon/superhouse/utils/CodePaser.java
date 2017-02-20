@@ -74,4 +74,88 @@ public class CodePaser {
         }
     }
 
+    /**
+     * @param pickCode
+     * @return
+     */
+    public String paserPickGoodsCodeToString(int pickCode) {
+
+        if (pickCode == -3) {
+
+            return "货物数量不够";
+        } else if (pickCode == -2) {
+
+            return "货物格式错误";
+        } else if (pickCode == -1) {
+
+            return "服务器错误";
+        } else if (pickCode == 0) {
+
+            return "提取失败";
+        } else if (pickCode > 0) {
+
+            return "提出成功";
+        } else {
+            return "位置代码";
+        }
+    }
+
+    /**
+     * @param scrapCode
+     * @return
+     */
+    public String paserScrapGoodsCodeToString(int scrapCode) {
+
+        if (scrapCode > 0) {
+
+            return " 成功报废" + scrapCode + "个货物";
+        } else if (scrapCode == -1) {
+
+            return "服务器错误";
+        } else {
+
+            return "报废失败";
+        }
+    }
+
+    /**
+     * @param staffCode
+     * @return
+     */
+    public String paserAddStaffCodeToString(int staffCode) {
+
+        if (staffCode > 0) {
+
+            return "添加成功";
+        } else if (staffCode == -1) {
+
+            return "服务器出错";
+        } else if (staffCode == -2) {
+
+            return "格式错误";
+        } else {
+            return "添加未成功";
+        }
+    }
+
+    /**
+     * @param staffCode
+     * @return
+     */
+    public String paserStopStaffCodeToString(int staffCode) {
+
+        if (staffCode > 0) {
+
+            return "停止成功" + staffCode + "个员工";
+        } else if (staffCode == -1) {
+
+            return "服务器错误";
+        } else if (staffCode == -3) {
+
+            return "格式错误";
+        } else {
+
+            return "停止失败";
+        }
+    }
 }

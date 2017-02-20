@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import javax.servlet.http.HttpServletResponse;
+import java.sql.Date;
 
 /**
  * Created by brainy on 17-2-18.
@@ -31,7 +32,7 @@ public class StaffController {
     /**
      * @return 对登录页面请求的响应
      */
-    @RequestMapping(value = "login", method = RequestMethod.GET)
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login() {
 
         return "login";
@@ -40,7 +41,7 @@ public class StaffController {
     /**
      * @return 跳回到首页
      */
-    @RequestMapping(value = "login", method = RequestMethod.POST)
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String doLogin(Model model,
                           @RequestParam(value = "_id") String _id,
                           @RequestParam(value = "password") String password,
@@ -71,7 +72,7 @@ public class StaffController {
             }
 
             //重定向到首页
-            return "redirect:/";
+            return "redirect:/index";
         } else {
 
             model.addAttribute("code", loginCode);
@@ -81,11 +82,47 @@ public class StaffController {
         }
     }
 
-    @RequestMapping(value = "logout", method = RequestMethod.GET)
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logout(SessionStatus sessionStatus) {
 
         sessionStatus.setComplete();
 
         return "redirect:/login";
+    }
+
+    @RequestMapping(value = "/staff", method = RequestMethod.GET)
+    public String manage(Model model) {
+
+        model.addAttribute("staffs", staffService.queryAllStaffs());
+
+        return "manage";
+    }
+
+    @RequestMapping(value = "/staff", method = RequestMethod.POST)
+    public String doManage(Model model,
+                           @RequestParam(value = "_id") String _id,
+                           @RequestParam(value = "staffname") String staffname,
+                           @RequestParam(value = "password") String password,
+                           @RequestParam(value = "birthday") Date birthday,
+                           @RequestParam(value = "issuper") Integer issuper) {
+
+        int code = staffService.addStaff(_id, staffname, password, birthday, issuper);
+
+        model.addAttribute("code", code);
+        model.addAttribute("codestring", CodePaser.getCodePaser().paserAddStaffCodeToString(code));
+
+        return "redirect:/manage";
+    }
+
+    @RequestMapping(value = "/stop", method = RequestMethod.POST)
+    public String doStop(Model model,
+                         @RequestParam(value = "_id") String[] _id) {
+
+        int code = staffService.stopStaffs(_id);
+
+        model.addAttribute("stop", code);
+        model.addAttribute("stopstring", CodePaser.getCodePaser().paserStopStaffCodeToString(code));
+
+        return "redirect:/staff";
     }
 }

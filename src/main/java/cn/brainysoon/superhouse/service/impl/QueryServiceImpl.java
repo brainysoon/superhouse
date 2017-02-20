@@ -4,12 +4,14 @@ import cn.brainysoon.superhouse.bean.Goods;
 import cn.brainysoon.superhouse.dao.GoodsRepository;
 import cn.brainysoon.superhouse.service.QueryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
  * Created by brainy on 17-2-18.
  */
+@Service
 public class QueryServiceImpl implements QueryService {
 
     GoodsRepository goodsRepository;
@@ -20,17 +22,13 @@ public class QueryServiceImpl implements QueryService {
     }
 
     @Override
-    public List<Goods> queryGoodsByKey(String key, String keyclass) {
+    public List<Goods> queryGoodsByKey(String key) {
 
-        if (keyclass.equals("_id")) {
+        if (key.equals("")) {
 
-
-        } else if (keyclass.equals("goodsname")) {
-
-        } else {
-
+            return null;
         }
 
-        return null;
+        return goodsRepository.findGoodsByKey(key);
     }
 }

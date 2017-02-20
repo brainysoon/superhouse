@@ -20,6 +20,7 @@ public class SaveController {
 
     SaveService saveService;
 
+    @Autowired
     public void setSaveService(SaveService saveService) {
         this.saveService = saveService;
     }
@@ -43,13 +44,9 @@ public class SaveController {
         int saveCode = saveService.saveGoods(_id, goodsname, count, goodsclass,
                 price, usefullife, dateproduced, position);
 
-        if (CodePaser.getCodePaser().paserSaveGoodsCode(saveCode)) {
+        model.addAttribute("code", saveCode);
+        model.addAttribute("codestring", CodePaser.getCodePaser().paserSaveGoodsCodeToString(saveCode));
 
-          
-        } else {
-
-        }
-
-        return null;
+        return "save";
     }
 }

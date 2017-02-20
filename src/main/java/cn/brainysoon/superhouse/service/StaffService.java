@@ -2,6 +2,9 @@ package cn.brainysoon.superhouse.service;
 
 import cn.brainysoon.superhouse.bean.Staff;
 
+import java.sql.Date;
+import java.util.List;
+
 /**
  * Created by brainy on 17-2-17.
  */
@@ -19,4 +22,26 @@ public interface StaffService {
      * @return Staff 实体
      */
     Staff getStaffById(String _id);
+
+    /**
+     * @return
+     */
+    List<Staff> queryAllStaffs();
+
+    /**
+     * @param _id
+     * @param staffname
+     * @param password
+     * @param birthdy
+     * @param issuper
+     * @return
+     */
+    int addStaff(String _id, String staffname, String password,
+                 Date birthdy, Integer issuper);
+
+    /**
+     * @param _id
+     * @return
+     */
+    int stopStaffs(String[] _id);
 }
