@@ -1,5 +1,7 @@
 package cn.brainysoon.superhouse.web;
 
+import cn.brainysoon.superhouse.bean.Staff;
+import cn.brainysoon.superhouse.service.LogService;
 import cn.brainysoon.superhouse.service.StaffService;
 import cn.brainysoon.superhouse.utils.CodePaser;
 import cn.brainysoon.superhouse.utils.CookieUtils;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.sql.Date;
 
 /**
@@ -23,6 +26,12 @@ import java.sql.Date;
 public class StaffController {
 
     private StaffService staffService;
+    private LogService logService;
+
+    @Autowired
+    public void setLogService(LogService logService) {
+        this.logService = logService;
+    }
 
     @Autowired
     public void setStaffService(StaffService staffService) {
@@ -100,6 +109,7 @@ public class StaffController {
 
     @RequestMapping(value = "/staff", method = RequestMethod.POST)
     public String doManage(Model model,
+                           HttpSession httpSession,
                            @RequestParam(value = "_id") String _id,
                            @RequestParam(value = "staffname") String staffname,
                            @RequestParam(value = "password") String password,
@@ -108,17 +118,32 @@ public class StaffController {
 
         int code = staffService.addStaff(_id, staffname, password, birthday, issuper);
 
+        //插入日志
+        if (code > 0) {
+            Staff staff = (Staff) httpSession.getAttribute("staff");
+            logService.addLogByClass(staff.get_id(), _id, LogService.ADD_STAFF);
+        }
+
         model.addAttribute("code", code);
         model.addAttribute("codestring", CodePaser.getCodePaser().paserAddStaffCodeToString(code));
 
-        return "redirect:/manage";
+        return "redirect:/staff";
     }
 
     @RequestMapping(value = "/stop", method = RequestMethod.POST)
     public String doStop(Model model,
+                         HttpSession httpSession,
                          @RequestParam(value = "_id") String[] _id) {
 
         int code = staffService.stopStaffs(_id);
+
+        //插入日志
+        if (code > 0) {
+            Staff staff = (Staff) httpSession.getAttribute("staff");
+            for (String id : _id) {
+                logService.addLogByClass(staff.get_id(), id, LogService.STOP_STAFF);
+            }
+        }
 
         model.addAttribute("stop", code);
         model.addAttribute("stopstring", CodePaser.getCodePaser().paserStopStaffCodeToString(code));

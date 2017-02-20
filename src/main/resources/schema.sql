@@ -24,24 +24,13 @@ CREATE TABLE goods
   PRIMARY KEY (_id, position)
 );
 
-DROP TABLE IF EXISTS goodslog;
+DROP TABLE IF EXISTS log;
 
-CREATE TABLE goodslog
-(
-  _id      VARCHAR(20) NOT NULL PRIMARY KEY,
-  goods_id VARCHAR(20) NOT NULL,
-  staff_id VARCHAR(20) NOT NULL,
-  logdate  DATETIME    NOT NULL,
-  content  VARCHAR(20)
-);
-
-DROP TABLE IF EXISTS stafflog;
-
-CREATE TABLE stafflog
+CREATE TABLE log
 (
   _id       VARCHAR(20) NOT NULL PRIMARY KEY,
-  staff_id  VARCHAR(20) NOT NULL,
   manage_id VARCHAR(20) NOT NULL,
+  object_id VARCHAR(20) NOT NULL,
   logdate   DATETIME    NOT NULL,
   content   VARCHAR(20)
 );

@@ -10,8 +10,10 @@
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="shortcut icon" type="image/x-icon" href="/resources/images/favicon.ico" media="screen"/>
     <script type="text/javascript" src="/resources/js/jquery-3.1.0.js"></script>
+    <script type="text/javascript" src="/resources/js/jquery.validate.min.js"></script>
     <script type="text/javascript" src="/resources/js/bootstrap.min.js"></script>
     <link href="/resources/css/style.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="/resources/js/validate.js"></script>
     <script type="text/javascript" src="/resources/js/messages_zh.js"></script>
 </head>
 <body>
@@ -59,50 +61,53 @@
         </div>
         <div class="center_saveForm">
             <div class="saveForm">
-                <form role="form" action="/staff" method="post" class="form-horizontal" style="height: 400px;">
+                <form role="form" action="/staff" method="post" class="form-horizontal" style="height: 400px;"
+                      id="manageForm">
                     <br><br>
                     <div class="form-group">
-                        <lable for="userNum" class="col-sm-4 control-label">员工号</lable>
-                        <div class="col-sm-8">
-                            <input type="text" name="_id" id="userNum" class="form-control">
+                        <lable for="userNum" class="col-sm-3 control-label" >员工号</lable>
+                        <div class="col-sm-9">
+                            <input type="text" name="_id" id="userNum" class="form-control" placeholder="6-8位数字">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <lable for="userName" class="col-sm-4 control-label">员工姓名</lable>
-                        <div class="col-sm-8">
-                            <input type="text" name="staffname" id="userName" class="form-control">
+                        <lable for="userName" class="col-sm-3 control-label" >员工姓名</lable>
+                        <div class="col-sm-9">
+                            <input type="text" name="staffname" id="userName" class="form-control" placeholder="英汉字符">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <lable for="userPsd" class="col-sm-4 control-label">密码</lable>
-                        <div class="col-sm-8">
-                            <input type="text" name="password" id="userPsd" class="form-control">
+                        <lable for="userPsd" class="col-sm-3 control-label" >密码</lable>
+                        <div class="col-sm-9">
+                            <input type="text" name="password" id="userPsd" class="form-control" placeholder="6-8 位数字">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <lable for="userBirth" class="col-sm-4 control-label">员工生日</lable>
-                        <div class="col-sm-8">
-                            <input type="text" name="birthday" id="userBirth" class="form-control">
+                        <lable for="userBirth" class="col-sm-3 control-label" >员工生日</lable>
+                        <div class="col-sm-9">
+                            <input type="text" name="birthday" id="userBirth" class="form-control"  placeholder="xxxx-xx-xx">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-4 control-label">是否为管理</label>
-                        <div class="col-sm-8">
+                        <label class="col-sm-3 control-label">是否为管理</label>
+                        <div class="col-sm-9">
                             <div class="radio" style="width: 50px;float: left;">
-                                <label><input type="radio" name="issuper" value="1">是</label>
+                                <label><input type="radio" name="issuper" value="1"
+                                              style="width: 50px;margin-left: -35px;">是</label>
                             </div>
                             <div class="radio" style="width: 50px;float: left;">
-                                <label><input type="radio" name="issuper" value="0" checked="checked">否</label>
+                                <label><input type="radio" name="issuper" value="0"
+                                              style="width: 50px;margin-left: -35px;" checked="checked">否</label>
                             </div>
                         </div>
                     </div>
                     <br>
                     <div class="form-group">
-                        <div class="col-sm-offset-4 col-sm-8">
+                        <div class="col-sm-offset-3 col-sm-9">
                             <button type="submit" class="btn btn-success">添加</button>
                         </div>
                     </div>
@@ -147,7 +152,7 @@
                     </table>
                     <br>
                     <div class="form-group">
-                        <div class="col-sm-offset-4 col-sm-8">
+                        <div class="col-sm-offset-3 col-sm-9">
                             <button type="submit" class="btn btn-success">停职</button>
                         </div>
                     </div>

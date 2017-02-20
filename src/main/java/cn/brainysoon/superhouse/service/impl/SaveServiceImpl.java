@@ -15,7 +15,7 @@ import java.sql.Date;
 @Service
 public class SaveServiceImpl implements SaveService {
 
-    GoodsRepository goodsRepository;
+    private GoodsRepository goodsRepository;
 
     @Autowired
     public void setGoodsRepository(GoodsRepository goodsRepository) {
@@ -50,6 +50,7 @@ public class SaveServiceImpl implements SaveService {
 
             //尝试存到数据库
             saveCode = goodsRepository.saveGoods(goods);
+
         } catch (Exception ex) {
             ex.printStackTrace();
             saveCode = -2;

@@ -6,6 +6,15 @@
 
 /*预定义标准end*/
 
+/*校验信息字体start*/
+.error {
+    color: #CD0000;
+    padding-left: 10px;
+    font-size: 15px;
+}
+
+/*校验信息字体end*/
+
 /*container start*/
 .container {
     width: 90%;
@@ -53,7 +62,7 @@
 }
 
 .top_sign {
-    width: 180px;
+    width: 200px;
     height: 65px;
     border: 0px solid gray;
     float: right;
@@ -67,7 +76,8 @@
     background-color: #2DA7E0;
     color: #ffffff;
     font-size: 16px;
-    width: 75px;
+    text-align: center;
+    width: 90px;
     height: 35px;
     float: left;
     padding: 5px 21px;
@@ -84,7 +94,8 @@
     background-color: #2DA7E0;
     color: #ffffff;
     font-size: 16px;
-    width: 75px;
+    text-align: center;
+    width: 90px;
     height: 35px;
     float: right;
     padding: 5px 21px;
@@ -165,7 +176,16 @@
 }
 
 .center_saveForm .saveForm form .form-group {
-    width: 489px;
+    width: 680px;
+}
+
+.center_saveForm .saveForm form .form-group label {
+    float: left;
+}
+
+.center_saveForm .saveForm form .form-group input {
+    width: 270px;
+    float: left;
 }
 
 .center_saveForm .saveForm form .form-group button {

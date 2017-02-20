@@ -28,7 +28,13 @@ public class StaffFilter implements Filter {
 
         String uri = httpServletRequest.getRequestURI();
 
-        System.out.println(uri);
+        //防止拦截器拦截静态资源
+        if (uri.contains(".")) {
+
+            chain.doFilter(request, response);
+            return;
+        }
+
 
         for (String s : URI_SAFE) {
 
@@ -41,7 +47,6 @@ public class StaffFilter implements Filter {
 
         if (session == null) {
 
-            System.out.println(session);
             httpServletResponse.sendRedirect("/login");
         } else {
 

@@ -51,13 +51,14 @@
                     <div class="form-group">
                         <label for="_id" class="t">员工号：</label>
                         <input id="_id" value="${_id}" name="_id" type="text" class="form-control x319 in"
-                               autocomplete="off">
+                               autocomplete="off" placeholder="请输入员工号"
+                               required pattern="\w{6,16}">
                     </div>
                     <!--密码-->
                     <div class="form-group">
                         <label for="password" class="t">密　码：</label>
                         <input id="password" value="${password}" name="password" type="password"
-                               class="password form-control x319 in">
+                               class="password form-control x319 in" placeholder="请输入正确的密码" required pattern="\w{6,8}">
                     </div>
 
                     <!--记住登录账号-->

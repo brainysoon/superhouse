@@ -21,6 +21,15 @@ public class ManageFilter implements Filter {
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         HttpServletResponse httpServletResponse = (HttpServletResponse) response;
 
+        String uri = httpServletRequest.getRequestURI();
+
+        if (uri.contains(".")) {
+
+            chain.doFilter(request, response);
+
+            return;
+        }
+
         try {
 
             HttpSession session = httpServletRequest.getSession();

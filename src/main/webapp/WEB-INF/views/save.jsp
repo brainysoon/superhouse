@@ -10,8 +10,10 @@
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="shortcut icon" type="image/x-icon" href="/resources/images/favicon.ico" media="screen"/>
     <script type="text/javascript" src="/resources/js/jquery-3.1.0.js"></script>
+    <script type="text/javascript" src="/resources/js/jquery.validate.min.js"></script>
     <script type="text/javascript" src="/resources/js/bootstrap.min.js"></script>
     <link href="/resources/css/style.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="/resources/js/validate.js"></script>
     <script type="text/javascript" src="/resources/js/messages_zh.js"></script>
 </head>
 <body>
@@ -59,74 +61,74 @@
         </div>
         <div class="center_saveForm">
             <div class="saveForm">
-                <form role="form" action="/save" method="post" class="form-horizontal">
+                <form role="form" action="/save" method="post" class="form-horizontal" id="saveForm">
                     <br><br>
                     <div class="form-group">
-                        <lable for="goodsNum" class="col-sm-4 control-label">货物编号</lable>
-                        <div class="col-sm-8">
+                        <lable for="goodsNum" class="col-sm-3 control-label">货物编号</lable>
+                        <div class="col-sm-9">
                             <input type="text" name="_id" id="goodsNum" class="form-control"
                                    placeholder="20位内有效数字">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <lable for="goodsPlace" class="col-sm-4 control-label">货物存放位置</lable>
-                        <div class="col-sm-8">
+                        <lable for="goodsPlace" class="col-sm-3 control-label">货物存放位置</lable>
+                        <div class="col-sm-9">
                             <input type="text" name="position" id="goodsPlace" class="form-control"
                                    placeholder="位置编号">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <lable for="goodsName" class="col-sm-4 control-label">货物名称</lable>
-                        <div class="col-sm-8">
+                        <lable for="goodsName" class="col-sm-3 control-label">货物名称</lable>
+                        <div class="col-sm-9">
                             <input type="text" name="goodsname" id="goodsName" class="form-control"
                                    placeholder="有效名称">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <lable for="goodsTime" class="col-sm-4 control-label">货物有效期</lable>
-                        <div class="col-sm-8">
+                        <lable for="goodsTime" class="col-sm-3 control-label">货物有效期</lable>
+                        <div class="col-sm-9">
                             <input type="text" name="usefullife" id="goodsTime" class="form-control"
                                    placeholder="有效天数">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <lable for="goodsPrice" class="col-sm-4 control-label">货物价格</lable>
-                        <div class="col-sm-8">
+                        <lable for="goodsPrice" class="col-sm-3 control-label">货物价格</lable>
+                        <div class="col-sm-9">
                             <input type="text" name="price" id="goodsPrice" class="form-control"
                                    placeholder="xx.xx">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <lable for="goodsNumber" class="col-sm-4 control-label">货物数量</lable>
-                        <div class="col-sm-8">
+                        <lable for="goodsNumber" class="col-sm-3 control-label">货物数量</lable>
+                        <div class="col-sm-9">
                             <input type="text" name="count" id="goodsNumber" class="form-control"
                                    placeholder="有效数量">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <lable for="goodsType" class="col-sm-4 control-label">货物类别</lable>
-                        <div class="col-sm-8">
+                        <lable for="goodsType" class="col-sm-3 control-label">货物类别</lable>
+                        <div class="col-sm-9">
                             <input type="text" name="goodsclass" id="goodsType" class="form-control"
                                    placeholder="有效类别">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <lable for="goodsDate" class="col-sm-4 control-label">货物生产日期</lable>
-                        <div class="col-sm-8">
+                        <lable for="goodsDate" class="col-sm-3 control-label">货物生产日期</lable>
+                        <div class="col-sm-9">
                             <input type="text" name="dateproduced" id="goodsDate" class="form-control"
                                    placeholder="XXXX-XX-XX">
                         </div>
                     </div>
                     <br>
                     <div class="form-group">
-                        <div class="col-sm-offset-4 col-sm-8">
+                        <div class="col-sm-offset-3 col-sm-9">
                             <button type="submit" class="btn btn-success"
                                     ${islogin?'':'disabled="disabled"'} ">
                                 ${islogin?'提交':'请登录'}
