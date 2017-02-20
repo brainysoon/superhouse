@@ -28,17 +28,25 @@ public class StaffFilter implements Filter {
 
         String uri = httpServletRequest.getRequestURI();
 
+        System.out.println(uri);
+
         for (String s : URI_SAFE) {
 
             if (s.equals(uri)) {
 
+                chain.doFilter(request, response);
                 return;
             }
         }
 
         if (session == null) {
 
+            System.out.println(session);
             httpServletResponse.sendRedirect("/login");
+        } else {
+
+            chain.doFilter(request, response);
+            return;
         }
     }
 }
