@@ -35,7 +35,7 @@
         </div>
         <div class="top_sign">
             <div class="sign_in">
-                <a href="${islogin?'/':'/login'}">
+                <a href="${islogin?'/index':'/login'}">
                     <c:out value="${islogin?staffname:'登录'}"/> </a>
             </div>
             <div class="sign_out">

@@ -36,7 +36,7 @@
         </div>
         <div class="top_sign">
             <div class="sign_in">
-                <a href="${islogin?'/':'/login'}">
+                <a href="${islogin?'/index':'/login'}">
                     <c:out value="${islogin?staffname:'登录'}"/> </a>
             </div>
             <div class="sign_out">
@@ -96,7 +96,7 @@
                                 <label><input type="radio" name="issuper" value="1">是</label>
                             </div>
                             <div class="radio" style="width: 50px;float: left;">
-                                <label><input type="radio" name="issuper" value="0">否</label>
+                                <label><input type="radio" name="issuper" value="0" checked="checked">否</label>
                             </div>
                         </div>
                     </div>
