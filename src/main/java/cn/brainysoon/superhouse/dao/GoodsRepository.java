@@ -14,6 +14,7 @@ public interface GoodsRepository {
     String PICK_GOODS = "UPDATE goods SET count=? WHERE _id=? AND position=?";
     String FIND_GOODS_BY_KEY = "SELECT * FROM goods WHERE _id LIKE ? OR goodsname LIKE" +
             " ? OR goodsclass LIKE ?";
+    String FIND_GOODS_BY_NULL_KEY = "SELECT * FROM goods";
     String FIND_GOODS_SHOULD_SCRAPED = "SELECT * FROM goods";
     String DELETE_GOODS_BY_ID_POSITION = "DELETE FROM goods WHERE _id=? AND position=?";
 

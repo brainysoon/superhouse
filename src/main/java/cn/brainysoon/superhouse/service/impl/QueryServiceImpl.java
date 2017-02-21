@@ -24,11 +24,6 @@ public class QueryServiceImpl implements QueryService {
     @Override
     public List<Goods> queryGoodsByKey(String key) {
 
-        if (key.equals("")) {
-
-            return null;
-        }
-
         return goodsRepository.findGoodsByKey(key);
     }
 }

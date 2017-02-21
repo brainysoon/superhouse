@@ -57,9 +57,23 @@ public class StaffServiceImpl implements StaffService {
     }
 
     @Override
-    public List<Staff> queryAllStaffs() {
+    public List<Staff> queryAllStaffs(Staff staff) {
 
-        return staffRepository.queryAllStaff();
+        List<Staff> staffs = staffRepository.queryAllStaff();
+
+        if (staffs == null) {
+            return null;
+        }
+
+        for (int i = 0; i < staffs.size(); i++) {
+
+            if (staffs.get(i).get_id().equals(staff.get_id())) {
+
+                staffs.remove(i);
+            }
+        }
+
+        return staffs;
     }
 
     @Override

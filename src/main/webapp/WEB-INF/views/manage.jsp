@@ -67,7 +67,7 @@
                     <div class="form-group">
                         <lable for="userNum" class="col-sm-3 control-label" >员工号</lable>
                         <div class="col-sm-9">
-                            <input type="text" name="_id" id="userNum" class="form-control" placeholder="6-8位数字">
+                            <input type="text" name="_id" id="userNum" class="form-control" placeholder="8位数字">
                         </div>
                     </div>
 

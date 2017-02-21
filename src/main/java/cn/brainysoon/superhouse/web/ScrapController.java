@@ -44,8 +44,12 @@ public class ScrapController {
     @RequestMapping(method = RequestMethod.POST)
     public String doScrap(Model model,
                           HttpSession httpSession,
-                          @RequestParam(value = "_id") String[] _id) {
+                          @RequestParam(value = "_id", defaultValue = "null") String[] _id) {
 
+        if (_id[0].equals("null")) {
+
+            return "redirect:/scrap";
+        }
 
         int code = scrapService.scrapGoods(_id);
 

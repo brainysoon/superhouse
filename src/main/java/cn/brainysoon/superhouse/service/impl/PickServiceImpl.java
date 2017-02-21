@@ -33,7 +33,7 @@ public class PickServiceImpl implements PickService {
 
         Goods goods = goodsRepository.findGoods(_id, position);
 
-        if (goods.getCount() > count) {
+        if (goods.getCount() >= count) {
 
             goods.setCount(goods.getCount() - count);
 

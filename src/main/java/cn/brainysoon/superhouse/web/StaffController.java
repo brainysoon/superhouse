@@ -100,9 +100,12 @@ public class StaffController {
     }
 
     @RequestMapping(value = "/staff", method = RequestMethod.GET)
-    public String manage(Model model) {
+    public String manage(Model model,
+                         HttpSession httpSession) {
 
-        model.addAttribute("staffs", staffService.queryAllStaffs());
+        Staff staff = (Staff) httpSession.getAttribute("staff");
+
+        model.addAttribute("staffs", staffService.queryAllStaffs(staff));
 
         return "manage";
     }
@@ -133,7 +136,12 @@ public class StaffController {
     @RequestMapping(value = "/stop", method = RequestMethod.POST)
     public String doStop(Model model,
                          HttpSession httpSession,
-                         @RequestParam(value = "_id") String[] _id) {
+                         @RequestParam(value = "_id", defaultValue = "null") String[] _id) {
+
+        if (_id[0].equals("null")) {
+
+            return "redirect:/staff";
+        }
 
         int code = staffService.stopStaffs(_id);
 

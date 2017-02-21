@@ -34,3 +34,5 @@ CREATE TABLE log
   logdate   DATETIME    NOT NULL,
   content   VARCHAR(20)
 );
+
+INSERT INTO staff VALUES('863744353','孙晓聪','12345678','1994-01-15','2017-02-17',1);

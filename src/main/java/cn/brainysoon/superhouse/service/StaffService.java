@@ -26,7 +26,7 @@ public interface StaffService {
     /**
      * @return
      */
-    List<Staff> queryAllStaffs();
+    List<Staff> queryAllStaffs(Staff staff);
 
     /**
      * @param _id

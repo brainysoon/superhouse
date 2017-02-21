@@ -10,7 +10,7 @@ import java.util.List;
 public interface StaffRepository {
 
     String QUERY_STAFF_BY_ID = "SELECT * FROM staff WHERE _id=?";
-    String QUERY_ALL_STAFF = "SELECT * FROM staff";
+    String QUERY_ALL_STAFF = "SELECT * FROM staff WHERE issuper<3";
     String ADD_STAFF = "INSERT INTO staff VALUES(?,?,?,?,?,?)";
     String DELETE_STAFF_BY_ID = "DELETE FROM staff WHERE _id=?";
 

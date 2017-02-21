@@ -16,6 +16,10 @@ $().ready(function () {
         return this.optional(element) || /^[\u0391-\uFFE5]+$/.test(value);
     }, "匹配中文(包括汉字和字符) ");
 
+    $.validator.addMethod("stringCheck", function(value, element) {                                         /*校验密码*/
+        return this.optional(element) || /^.*[A-Za-z0-9\\w_-]+.*$/.test(value);
+    }, "只能包含英文、数字、下划线等字符");
+
     jQuery.validator.addMethod("isNumber", function(value, element) {
         return this.optional(element) || /^[-\+]?\d+$/.test(value) || /^[-\+]?\d+(\.\d+)?$/.test(value);
     }, "匹配数值类型，包括整数和浮点数");
@@ -41,7 +45,7 @@ $().ready(function () {
             },
             goodsname:{
                 required:true,
-                isChineseChar:true
+                stringCheck:true
             },
             usefullife:{
                 required:true,
@@ -85,7 +89,7 @@ $().ready(function () {
             },
             goodsname:{
                 required:"请输入货物名称",
-                isChineseChar:"只能输入汉字或字符"
+                stringCheck:"只能输入汉字、字母、数字或字符"
             },
             usefullife:{
                 required:"请输入有效日期",
@@ -208,7 +212,7 @@ $().ready(function () {
             },
             staffname:{
                 required:true,
-                isChineseChar:true
+                stringCheck:true
             },
             password:{
                 required:true,
@@ -230,7 +234,7 @@ $().ready(function () {
             },
             staffname:{
                 required:"请输入员工姓名",
-                isChineseChar:"只能输入汉字或字符"
+                stringCheck:"只能输入汉字、字母、数字或字符"
             },
             workCompany:{
                 required:"请输入您的密码",

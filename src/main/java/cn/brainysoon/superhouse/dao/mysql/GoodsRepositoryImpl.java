@@ -101,6 +101,12 @@ public class GoodsRepositoryImpl implements GoodsRepository, RowMapper<Goods> {
 
         try {
 
+            //查询所有货物
+            if (key.equals("")) {
+
+                return jdbcOperations.query(FIND_GOODS_BY_NULL_KEY, this);
+            }
+
             return jdbcOperations.query(FIND_GOODS_BY_KEY,
                     new String[]{key, key, key}, this);
 
