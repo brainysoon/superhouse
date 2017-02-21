@@ -27,7 +27,9 @@ public class QueryController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public String query() {
+    public String query(Model model) {
+
+        model.addAttribute("goodses", queryService.queryGoodsByKey(""));
 
         return "search";
     }

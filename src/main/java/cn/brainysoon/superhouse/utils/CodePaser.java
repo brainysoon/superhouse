@@ -80,12 +80,15 @@ public class CodePaser {
      */
     public String paserPickGoodsCodeToString(int pickCode) {
 
-        if (pickCode == -3) {
+        if (pickCode == -4) {
+
+            return "货物已经提取完";
+        } else if (pickCode == -3) {
 
             return "货物数量不够";
         } else if (pickCode == -2) {
 
-            return "货物格式错误";
+            return "不存在该货物";
         } else if (pickCode == -1) {
 
             return "服务器错误";

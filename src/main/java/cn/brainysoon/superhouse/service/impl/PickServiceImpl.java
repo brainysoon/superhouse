@@ -33,12 +33,24 @@ public class PickServiceImpl implements PickService {
 
         Goods goods = goodsRepository.findGoods(_id, position);
 
-        if (goods.getCount() >= count) {
+        //不存在该货物
+        if (goods == null) {
+
+            return -2;
+        }
+
+        if (goods.getCount() > count) {
 
             goods.setCount(goods.getCount() - count);
 
             return goodsRepository.pickGoods(goods);
 
+        } else if (goods.getCount() == count) {
+
+            //删除货物
+            goodsRepository.deleteGoodsByIdPosition(_id, position);
+
+            return -4;
         } else {
 
             return -3;

@@ -2,11 +2,11 @@ package cn.brainysoon.superhouse.service.impl;
 
 import cn.brainysoon.superhouse.bean.Goods;
 import cn.brainysoon.superhouse.dao.GoodsRepository;
+import cn.brainysoon.superhouse.utils.DateUtils;
 import cn.brainysoon.superhouse.service.ScrapService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,17 +37,13 @@ public class ScrapServiceImpl implements ScrapService {
          * 找到过期的货物
          */
         List<Goods> scraps = new ArrayList<>();
-        java.util.Date now = new java.util.Date();
-        long nowDays = now.getYear() * (now.getMonth() + 1) * now.getDay();
 
         for (int i = 0; i < goodses.size(); i++) {
 
             Goods goods = goodses.get(i);
 
-            Date date = goods.getDateproduced();
-            long days = date.getYear() * (date.getMonth() + 1) * date.getDay();
-
-            if ((days + goods.getUsefullife()) > nowDays) {
+            if (DateUtils.getInstances().isDateDepress(goods.getDateproduced()
+                    , goods.getUsefullife())) {
 
                 scraps.add(goods);
             }
